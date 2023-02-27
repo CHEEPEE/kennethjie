@@ -37,11 +37,14 @@ const processArticle = async ({ metadata, body }: any) => {
         // EXTRACT IMAGES, PUSH TO ARRAY
         const listImages = parsedContent?.match(/<img[^>]*>/g);
 
-        const readTime = Math.ceil(((articleParse?.length * 0.2) / 60) / 5)
+        let  readTime = 0
+        if(articleParse){
+           readTime = Math.ceil(((articleParse?.length * 0.2) / 60) / 5)
+        }
 
-        const imageLinkList = listImages
-            ? listImages.map(img => /<img.*?src=['"](.*?)['"]/.exec(img)[1])
-            : []
+        // const imageLinkList = listImages
+        //     ? listImages.map((img:any) => /<img.*?src=['"](.*?)['"]/.exec(img)[1])
+        //     : []
 
         // const $ = cheerio.load(articleParse?.content)
         // const linkObjects = $('a')
@@ -61,7 +64,7 @@ const processArticle = async ({ metadata, body }: any) => {
             title: articleParse?.title,
             length: articleParse?.length,
             listImages: listImages && [],
-            imageLinkList,
+            // imageLinkList,
             readTime,
             source: metadata.source,
             origin: "web-app",

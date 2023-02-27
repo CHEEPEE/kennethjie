@@ -28,7 +28,8 @@ const ArticlePage: NextPage = () => {
         var textNodeList = [];
         var textList = [];
         // console.log(readerContainer);
-        var walker = document.createTreeWalker(document.getElementById(READER_ID), NodeFilter.SHOW_TEXT, null, false);
+        const nodeElement = document.getElementById(READER_ID) as Node
+        var walker = document.createTreeWalker(nodeElement, NodeFilter.SHOW_TEXT, null);
         while (walker.nextNode()) {
             textNodeList.push(walker.currentNode);
             textList.push(walker.currentNode.textContent);
@@ -52,7 +53,7 @@ const ArticlePage: NextPage = () => {
                 <div className="static flex flex-row w-full h-full">
 
                     <div className="grow p-[40px]">
-                        <input placeholder="input url" className="p-2 border border-blue-200 w-full" type="input" onKeyDown={async (e) => {
+                        <input placeholder="input url" className="p-2 border border-blue-200 w-full" type="input" onKeyDown={async (e:any) => {
                             if (e.key == 'Enter') {
                                 const content = await urlParse.mutateAsync({ url: e.target.value })
                                 setUrlContent(content.article?.content as any)

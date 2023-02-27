@@ -1,3 +1,4 @@
+// @ts-nocheck
 module.exports = {
 
   cleanTitleString: function (value) {

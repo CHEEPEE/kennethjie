@@ -1,3 +1,4 @@
+// @ts-nocheck
 module.exports = function ($) {
   const $metaTags = $('meta')
   var extracted = {}

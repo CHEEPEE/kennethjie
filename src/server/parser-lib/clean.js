@@ -1,6 +1,6 @@
 const utils = require('./utils')
 
-module.exports = function (key, value, options) {
+module.exports = function (/** @type {string} */ key, /** @type {string} */ value, /** @type {{ descriptionLength: any; ensureSecureImageRequest: any; }} */ options) {
   if (key === 'description' || key === 'og:description') {
     value = utils.truncate(value, options.descriptionLength)
   }

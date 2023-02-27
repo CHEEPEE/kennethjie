@@ -1,3 +1,4 @@
+// @ts-nocheck
 const clean = require('./clean')
 
 module.exports = MetadataFields

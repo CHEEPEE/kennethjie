@@ -1,3 +1,4 @@
+// @ts-nocheck
 const cheerio = require('cheerio')
 const MetadataFields = require('./metadata-fields')
 const extractMetaTags = require('./extract-meta-tags')

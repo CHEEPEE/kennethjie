@@ -1,3 +1,4 @@
+// @ts-nocheck
 module.exports = function (string, sourceMap) {
   const _sourceMap = normalizeSourceMap(sourceMap)
   return _sourceMap[string.toLowerCase()]
