@@ -39,107 +39,14 @@ const opts = Object.assign(
   }
 )
 
-const play = async () => {
+ const play = async () => {
 
 
-  // const urlData = encodeURIComponent(url);
-  // const options = {
-  //   hostname: 'api.crawlbase.com',
-  //   path: '/?token=hEOHjfQZploqwmGa7rBQ8A&url=' + urlData
-  // };
-
-  // return new Promise((resolve, reject) => {
-  //   https.request(options, (response) => {
-  //     let body = '';
-  //     response.on('data', chunk => body += chunk).on('end', () => resolve(body)).on('error', reject)
-  //   }).end();
-  // })
 
   const newToken = 'hEOHjfQZploqwmGa7rBQ8A'
   const api = new CrawlingAPI({ token: newToken });
-  // // const response = await 
-  // return new Promise((resolve, rejects) => {
-  //   api.get(url).then((response) => {
-
-  //     console.log("response.statusCode", response.statusCode)
-  //     if (response.statusCode === 200) {
-  //       const chunks = [];
-  //       // console.log()
-
-  //       response.on("data", (chunk) => chunks.push(chunk))
-  //       response.on('end', () => {
-  //         console.log('DONE HTTP Request', Buffer.concat(chunks).toString('utf8'))
-  //         resolve(Buffer.concat(chunks).toString('utf8'))
-  //       });
-  //       response.on('error', (e) =>
-  //         console.log('ERROR => ', e)
-  //       );
-  //       // parseHtml(response.body)
-  //       // response.on('data', chunk => body += chunk).on('end', () => console.log(body)).on('error', (e) => console.log(e))
 
 
-  //     } else {
-  //       console.log("fail to read")
-  //       // reject(`<h1>Fail</h1>`)
-  //     }
-  //     // return new Promise((resolve, rejects) => {
-
-  //     // })
-
-
-
-  //   })
-  // })
-
-
-
-
-  // return new Promise((resolve, reject) => {
-  //   if (response.statusCode === 200) {
-  //     let body = ''
-  //     response.on('data', chunk => {
-  //       body += chunk
-  //     }).on('end', () => {
-  //       const data = parseHtml(body)
-  //       resolve(data)
-  //     }).on('error', e => {
-  //       return reject(e)
-  //     })
-
-
-  //   } else {
-  //     console.log("fail to read")
-  //     reject(`<h1>Fail</h1>`)
-  //   }
-  // })
-
-
-  // return new Promise((resolve, reject) => {
-
-  //   api.get(url).then(response => {
-  //     console.log("response.statusCode", response.statusCode)
-  //     if (response.statusCode === 200) {
-  //       let body = '';
-  //       response.on('data', chunk => {
-  //         console.log("adding")
-  //         body += chunk
-  //       }).on('end', () => {
-  //         console.log("done adding chunk")
-  //         return resolve(`<h1>hi</h1>`)
-  //       })
-
-
-  //     } else {
-  //       console.log("fail to read")
-  //     }
-
-
-  //   }).catch((e) => {
-  //     return reject(e.toString())
-  //   });
-  // }).catch(e => {
-  //   console.log(e)
-  // })
 
 
 
@@ -147,56 +54,6 @@ const play = async () => {
   const crawlbaseToken = '6Cue4sFzl9KBjJqoUYOkKg';
   const auth = `Basic ${Buffer.from(crawlbaseToken).toString('base64')}`;
 
-  // process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
-
-  // return new Promise((resolve, reject) => {
-  //   http
-  //     .request({
-  //       host: 'smartproxy.crawlbase.com',
-  //       port: 8012,
-  //       method: 'CONNECT',
-  //       path: url,
-  //       headers: {
-  //         'Proxy-Authorization': auth,
-  //       },
-  //     })
-  //     .on('connect', (res, socket) => {
-  //       if (res.statusCode === 200) {
-  //         https.get(
-  //           {
-  //             path: url,
-  //             agent: new https.Agent({ socket }),
-  //           },
-  //           (res) => {
-  //             const chunks = [];
-  //             res.on('data', (chunk) => {
-  //               console.log("chunk data", chunk.toString())
-  //               chunks.push(chunk)
-  //             });
-  //             res.on('end', () => {
-  //               const data = Buffer.concat(chunks).toString('utf8')
-
-  //               resolve(data)
-  //             });
-  //           }
-  //         );
-  //       } else {
-  //         console.error(`Wrong status code: ${res.statusCode}`);
-  //       }
-  //     })
-  //     .on('error', console.error)
-  //     .end();
-  // })
-  // const config = {
-  //   host: 'smartproxy.crawlbase.com',
-  //   port: 8012,
-  //   headers: { 'Proxy-Authorization': auth },
-  // }
-
-  // const ax = axios.create(config)
-  // const response = await ax.get(`${url}`)
-
-  // return response.data
   const crawlConfig = {
     pageWait: 5000,
     ajaxWait: true
@@ -204,10 +61,7 @@ const play = async () => {
 
   return api.get(url2, crawlConfig).then(response => {
     return response.body
-    // if (response.statusCode === 200) {
-    //   console.log(response.body);
 
-    // }
   }).catch(error => console.error);
 }
 
@@ -235,25 +89,4 @@ const parseHtml = async (html) => {
   console.log("article", article)
   return article.content
 }
-
-app.get("/", async (req, res) => {
-  play().then(async data => {
-    const resultData = await parseHtml(data)
-    res.send(resultData);
-  }).catch(e => {
-    console.log("error", e)
-  })
-})
-
-
-//   // res.send("data");
-// });
-
-
-// const run = async () => {
-//   const playData = await play()
-//   console.log("playData", playData)
-// }
-
-// run()
 
