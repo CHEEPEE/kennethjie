@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&family=Nixie+One&display=swap');
+
+/* From Public Directory */
+
+
+.font-lato {
+    font-family: 'Lato', sans-serif!important;
+}
+
+.font-nixie-one {
+    font-family: 'Nixie One',monospace !important;
+}
 
 *::-webkit-scrollbar {
     display: none;
@@ -18,7 +31,8 @@ html {
     width: 100%;
 }
 
-body, #__next {
+body,
+#__next {
     /* position: fixed; */
     /* height: 100% !important; */
 

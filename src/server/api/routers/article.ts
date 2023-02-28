@@ -4,7 +4,7 @@ import { Readability } from '@mozilla/readability'
 const JSDOM = require('jsdom').JSDOM
 import metadataParser from '../../parser-lib/parse'
 import { Configuration, OpenAIApi } from 'openai'
-
+import { env } from "~/env.mjs";
 import {
     createTRPCRouter,
     publicProcedure,
@@ -12,8 +12,10 @@ import {
 } from "~/server/api/trpc";
 
 const configuration = new Configuration({
-    apiKey: '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',
+    apiKey: env.OPENAI_KEY,
 });
+
+const openai = new OpenAIApi(configuration);
 
 
 const processArticle = async ({ metadata, body }: any) => {
@@ -37,9 +39,9 @@ const processArticle = async ({ metadata, body }: any) => {
         // EXTRACT IMAGES, PUSH TO ARRAY
         const listImages = parsedContent?.match(/<img[^>]*>/g);
 
-        let  readTime = 0
-        if(articleParse){
-           readTime = Math.ceil(((articleParse?.length * 0.2) / 60) / 5)
+        let readTime = 0
+        if (articleParse) {
+            readTime = Math.ceil(((articleParse?.length * 0.2) / 60) / 5)
         }
 
         // const imageLinkList = listImages
@@ -100,10 +102,9 @@ const getUrlContentFunction = async ({ url }: { url: string }) => {
     }
 }
 
-
 export const articleRouter = createTRPCRouter({
     summarizeArticle: publicProcedure.input(z.object({ content: z.string() })).mutation(async (content) => {
-        const openai = new OpenAIApi(configuration);
+        // console.log(content.input.content);
         const response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: `Summarize this for someone who is working in corporate world:\n\n` + content.input.content,
@@ -113,8 +114,10 @@ export const articleRouter = createTRPCRouter({
             frequency_penalty: 0,
             presence_penalty: 0,
         });
-        console.log(response.data.choices);
+        // console.log(response);
         return response.data.choices[0]
+
+        return { text: "data" }
     }),
     parseArticle: publicProcedure
         .input(z.object({ url: z.string() })).mutation(async ({ input }) => {
@@ -132,8 +135,6 @@ export const articleRouter = createTRPCRouter({
             )
             const metadata = metadataParser(input.url, urlBody.body, opts)
             const _article = await processArticle({ metadata, body: urlBody.body })
-
-
             return { content: `url you input: ${input.url} ${urlBody.toString()}`, article: _article }
         })
 })
