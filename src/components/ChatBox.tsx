@@ -14,7 +14,7 @@ const ChatBox = () => {
             const _prompt = prompt
             let inputHTML: HTMLInputElement = document.getElementById('input-prompt') as HTMLInputElement
             inputHTML.value = ""
-            const response = await jie.mutateAsync({ content: chat + prefix + _prompt + '\n\n' })
+            const response = await jie.mutateAsync({ content: chat + '\n'+ prefix + _prompt + '\n' })
             console.log(response)
             setChat(response as any)
         }
@@ -39,7 +39,7 @@ const ChatBox = () => {
                 className={clsx(!isChatActive && 'hidden', "rotate-45 hover:bg-red-500 text-lg transition-all shadow-md ease-in cursor-pointer hover:scale-110 bg-gray-300 border rounded-[50%] flex items-center justify-center text-white w-[35px] h-[35px]")}>
                 ＋
             </div>
-            <div className={clsx(chat.length != 0 && isChatActive ? 'bg-transparent shadow-none' : isChatActive ? 'bg-[#e9e9e9] shadow-md ' : '', ' rounded-[10px]')}>
+            <div className={clsx(chat.length != 0 && isChatActive ? 'bg-transparent shadow-none' : isChatActive ? 'bg-[#e9e9e9] shadow-md w-[330px]' : '', ' rounded-[10px]')}>
                 {chat.length !== 0 && <textarea
                     id="chat-response"
                     readOnly
