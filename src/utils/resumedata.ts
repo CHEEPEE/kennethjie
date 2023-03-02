@@ -7,7 +7,8 @@ export const resume_data = {
     //     name:'Michelle Angiela Arbado',
     //     gender:'female'
     // },
-    hobbies:['motorcycle'],
+    // objective: `As a highly skilled software engineer with experience in designing and developing web and mobile applications using React, Node.js, and React Native, I am seeking a challenging and dynamic role that allows me to apply my technical expertise and grow my career in a supportive and collaborative environment. I am committed to writing clean, modular, and well-tested code, staying up-to-date with emerging technologies, and collaborating efectively with other team members to deliver high-quality solutions that meet business objectives.`,
+    hobbies: ['motorcycle'],
     work_experience: [
         {
             date: "🗓️ June 2019 - Present",
