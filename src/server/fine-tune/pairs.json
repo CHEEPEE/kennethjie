@@ -1,0 +1,22 @@
+[
+  {
+    "prompt": "Describe your experience working as a 🧑🏻‍💻 Software Engineer at 💼 Muse.",
+    "completion": "Designed and developed a SaaS web application using React with Nextjs and Nodejs as backend creating modular secure and welltested code Stay uptodate on new development and platforms to make technology recommendations and set up the right tools for the job Work in an agile software development team to complete tasks through sprints collaborating with other developers engineers and designers within the company Implemented a process for the team to address bugs within the SLA and minimize bug backlog Developed an iOS and Android application using React Native and Firebase"
+  },
+  {
+    "prompt": "Describe your experience working as a 🧑🏻‍💻 Software Engineer at 💼 Stacktrek.",
+    "completion": "Built software in React and Nodejs using testdriven development Developed an iOS and Android application using React Native and Firebase Modified and maintained a WordPress website"
+  },
+  {
+    "prompt": "Describe your experience working as a 🧑🏻‍💻 Android Developer Intern at 💼 Project Assistant.",
+    "completion": "Gathered and documented client requirements for product development enhancement and implementation"
+  },
+  {
+    "prompt": "Describe your experience working on Muse.",
+    "completion": "Muse is a knowledge base for thinking processWe timestamp your reading writing process and make it shareable to others"
+  },
+  {
+    "prompt": "Describe your experience working on Transnote.",
+    "completion": "Transnote helps you to tag and store video notes by timestamps while watching video on the same page A simple effortless experience to recall and share video references within a few clicks"
+  }
+]

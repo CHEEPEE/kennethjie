@@ -1,61 +1,12 @@
 import { children } from "cheerio/lib/api/traversing"
 import { Props } from "html-react-parser/lib/attributes-to-props"
 import { FC, ReactNode } from "react"
+import ChatBox from "./ChatBox"
+import { resume_data } from "~/utils/resumedata"
 
-const resume_data = {
-    work_experience: [
-        {
-            date: "🗓️ June 2019 - Present",
-            company: "💼 Muse",
-            location: "📍 Hong Kong (Remotely)",
-            position: "🧑🏻‍💻 Software Engineer",
-            work_description: [
-                "Designed and developed a SaaS web application using React with Next.js and Node.js as backend, creating modular, secure, and well-tested code.",
-                "Stay up-to-date on new development and platforms to make technology recommendations and set up the right tools for the job.",
-                "Work in an agile software development team to complete tasks through sprints, collaborating with other developers, engineers, and designers within the company.",
-                "Implemented a process for the team to address bugs within the SLA and minimize bug backlog.",
-                "Developed an iOS and Android application using React Native and Firebase."
-            ]
-        },
-        {
-            date: "🗓️ October 2018 - June 2019",
-            company: "💼 Stacktrek",
-            location: "📍 Iloilo, Philippines",
-            position: "🧑🏻‍💻 Software Engineer",
-            work_description: [
-                "Built software in React and Node.js using test-driven development.",
-                "Developed an iOS and Android application using React Native and Firebase.",
-                "Modified and maintained a WordPress website."
-            ]
-        },
-        {
-            date: "🗓️ April 2017 - June 2017",
-            company: "💼 Project Assistant",
-            location: "📍 Iloilo, Philippines",
-            position: "🧑🏻‍💻 Android Developer Intern",
-            work_description: [
-                "Gathered and documented client requirements for product development, enhancement, and implementation."
-            ]
-        }
-    ],
-    projects:
-        [
-            {
-                title: "Muse",
-                description: `Muse is a knowledge base for thinking process.We timestamp your reading/ writing process and make it shareable to others.`,
-                link: "muse.is"
-            },
-            {
-                title: "Transnote",
-                description: `Transnote helps you to tag and store video notes by timestamps, while watching video on the same page. A simple, effortless experience to recall and share video references within a few clicks.`,
-                link: "https://www.transnote.co/"
-            }
-        ]
-    ,
-}
 
 const Button = ({ children }: { children: string | ReactNode }) => {
-    return <button className="px-4 hover:bg-gray-200 py-1 rounded-sm border border-gray-500 text-sm text-gray-600 mb-5 font-bold">{children}</button>
+    return <button className="px-4 hover:bg-gray-200 py-1 rounded-sm border border-gray-500 text-xs text-gray-600 mb-5 font-bold">{children}</button>
 }
 
 type Project = {
@@ -65,18 +16,20 @@ type Project = {
 }
 const ProjectItems = ({ project }: { project: Project }) => {
     const { title, description, link } = project
-    return (<div className="flex flex-col justify-between w-[320px] gap-7 h-fit md:h-[320px]">
-        <div className="flex flex-col gap-3">
-            <Title>
-                {title}
-            </Title>
-            <div className="font-nixie-one text-sm text-gray-600">
-                {description}
-            </div></div>
-        <div>
-            <Button><a href={link} className="text-gray-600" style={{ letterSpacing: 3 }}>VIEW</a></Button>
-        </div>
-    </div>)
+    return (
+
+        <a href={link}><div className="flex hover:scale-[101%] cursor-pointer transition ease-in  flex-col justify-between w-[320px] gap-7 h-fit md:h-[150px]">
+            <div className="flex flex-col gap-3">
+                <Title>
+                    {title}
+                </Title>
+                <div className="font-nixie-one text-xs text-gray-600">
+                    {description}
+                </div></div>
+            <div>
+                {/* <Button><a href={link}>VIEW</a></Button> */}
+            </div>
+        </div></a>)
 }
 
 
@@ -98,7 +51,7 @@ const WorkDescription = ({ children }: { children: string | ReactNode }) => {
 const TimeLineItem = ({ isStart, isEnd, work }: { work: any, isEnd: boolean, isStart: boolean }) => {
     const { date, company, location, position, work_description } = work
     return (
-        <div className="flex w-full flex-row">
+        <div className="flex w-full flex-row hover:animate-pulse">
             <div className="w-[25px] pl-2 pr-5 flex-col flex justify-start">
                 <div className="w-[10px] h-[10px] my-[8px] rounded-[50%] bg-gray-300" />
                 {!isEnd && <div className="h-full ml-[4px] mt-1 w-[1px] bg-gray-300" />}
@@ -166,23 +119,31 @@ const PortfolionHome = () => {
             <div className="flex flex-col w-full justify-center">
                 <div id="work" className="h-fit flex justify-center w-full p-[20px] md:pt-[60px]">
                     <div className="flex max-w-[640px] flex-col items-start justify-start w-full md:justify-center">
-                        <div className="text-xs text-gray-600 mb-5 font-medium" style={{ letterSpacing: 3 }}> WORKS</div>
+                        <div className="text-xs text-gray-600 mb-5 font-medium" style={{ letterSpacing: 3 }}> SOME THINGS I'VE BUILT</div>
                         <div className="flex w-full flex-col md:flex-row gap-10">
                             {resume_data.projects.map(project => <ProjectItems project={project} />)}
                             {/* {resume_data.work_experience.map((work, index) => <TimeLineItem isEnd={index == resume_data.work_experience.length - 1.} isStart={index == 0} work={work} />)} */}
                         </div>
                     </div>
                 </div>
+
                 <div id="work" className="h-[300px] w-full flex justify-center w-full p-[20px] md:pt-[60px]">
-                    <div className="flex max-w-[640px] flex-col justify-center w-full md:justify-center">
-                        <div className="text-xs text-gray-600 mb-10 font-medium" style={{ letterSpacing: 3 }}> NEED A HAND?</div>
-                        <div className="flex w-full items-center justify-center">
+                    <div className="flex max-w-[640px] flex-col justify-center w-full items-center md:justify-center">
+                        <div className="text-xs text-gray-600 mb-10 font-medium" style={{ letterSpacing: 3 }}> Get In Touch</div>
+                        <div className="flex w-full flex-col gap-10 items-center justify-center">
+                            <div className="w-[320px] text-xs font-nixie-one text-gray-600">
+                                Although I’m not currently looking for any new opportunities, my inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!
+                            </div>
                             <button
                                 onClick={() => { window.open('mailto:kennethjiepadasas@gmail.com'); }}
-                                className="px-4 animate-bounce py-1 rounded-sm border border-gray-500 text-md text-gray-600 mb-5 font-bold">EMAIL ME</button>
+                                className="px-4 animate-bounce rounded-[5px] border border-gray-500 text-sm text-gray-600 mb-5 py-[2px] hover:bg-gray-600 ease-in-out duration-500 hover:text-white" style={{ letterSpacing: 2 }}>Say Hello!</button>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="fixed w-max-[420px] right-[20px] bottom-[20px] flex justify-center">
+                <ChatBox />
             </div>
             {/* <div className="h-screen w-full">
                 <div className="flex flex-col items-center justify-start w-full h-full">

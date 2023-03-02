@@ -1,0 +1,16 @@
+🧑🏻‍💻 Software Engineer at 💼 Muse
+Designed and developed a SaaS web application using React with Next.js and Node.js as backend, creating modular, secure, and well-tested code.
+Stay up-to-date on new development and platforms to make technology recommendations and set up the right tools for the job.
+Work in an agile software development team to complete tasks through sprints, collaborating with other developers, engineers, and designers within the company.
+Implemented a process for the team to address bugs within the SLA and minimize bug backlog.
+Developed an iOS and Android application using React Native and Firebase.
+🧑🏻‍💻 Software Engineer at 💼 Stacktrek
+Built software in React and Node.js using test-driven development.
+Developed an iOS and Android application using React Native and Firebase.
+Modified and maintained a WordPress website.
+🧑🏻‍💻 Android Developer Intern at 💼 Project Assistant
+Gathered and documented client requirements for product development, enhancement, and implementation.
+Muse
+Muse is a knowledge base for thinking process.We timestamp your reading/ writing process and make it shareable to others.
+Transnote
+Transnote helps you to tag and store video notes by timestamps, while watching video on the same page. A simple, effortless experience to recall and share video references within a few clicks.
